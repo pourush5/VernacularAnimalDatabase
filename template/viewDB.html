@@ -1,13 +1,47 @@
 {% extends 'headerPage.html' %}
 
-{% block content%}
+{% block content %}
+    <div class="container">
+        <h1 class="title">Image Gallery</h1>
 
-{% for i in listOfImagesPath %}
+        {% for image in images %}
+        <div class="image-entry">
+            <img src="{{ image.image_path }}" style="width: 100px;">
+            <p>Vernacular Name: <strong>{{ image.vernacular_name }}</strong></p>
+            <p>Language: <strong>{{ image.language }}</strong></p>  <!-- Display language -->
+            <p>Predicted Label: <strong>{{ image.predicted_label }}</strong></p>
+        </div>
+        <br>
+        {% endfor %}
+    </div>
 
-<img src={{i}} style="width: 100px;"> <br>
-
-{% endfor%}
-
-
-
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            color: #2c3e50;
+        }
+        .image-entry {
+            background: #ecf0f1;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .image-entry img {
+            display: block;
+            margin: 0 auto 10px;
+        }
+        .image-entry p {
+            text-align: center;
+            font-size: 1.2em;
+            color: #34495e;
+        }
+    </style>
 {% endblock %}

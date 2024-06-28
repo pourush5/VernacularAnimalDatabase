@@ -25,6 +25,8 @@ urlpatterns = [
     url('^$',views.index,name='homepage'),
     url('predictImage',views.predictImage,name='predictImage'),
     url('viewDataBase',views.viewDataBase,name='viewDataBase'),
+    url('searchDatabase',views.searchDatabase,name='searchDatabase'),
+    url('about',views.about,name='about'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

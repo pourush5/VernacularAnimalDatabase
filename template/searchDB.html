@@ -1,0 +1,78 @@
+{% extends 'headerPage.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="title">Search the Vernacular Animal Database</h1>
+
+        <form method="get" action="{% url 'searchDatabase' %}">
+            <div class="form-group">
+                <label for="searchQuery" class="form-label">Search:</label>
+                <input type="text" name="q" id="searchQuery" class="form-control" value="{{ query }}">
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Search</button>
+        </form>
+
+        {% if results %}
+        <div class="result-section mt-5">
+            <h2>Search Results</h2>
+            {% for result in results %}
+            <div class="image-entry">
+                <img src="{{ result.image_path }}" style="width: 100px;">
+                <p>Vernacular Name: <strong>{{ result.vernacular_name }}</strong></p>
+                <p>Language: <strong>{{ result.language }}</strong></p>
+                <p>Predicted Label: <strong>{{ result.predicted_label }}</strong></p>
+            </div>
+            <br>
+            {% endfor %}
+        </div>
+        {% elif query %}
+        <p>No results found for "{{ query }}"</p>
+        {% endif %}
+    </div>
+
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            color: #2c3e50;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-label {
+            font-size: 1.2em;
+            color: #34495e;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 1.2em;
+        }
+        .result-section {
+            margin-top: 20px;
+        }
+        .image-entry {
+            background: #ecf0f1;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .image-entry img {
+            display: block;
+            margin: 0 auto 10px;
+        }
+        .image-entry p {
+            text-align: center;
+            font-size: 1.2em;
+            color: #34495e;
+        }
+    </style>
+{% endblock %}

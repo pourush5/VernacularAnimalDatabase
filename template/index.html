@@ -1,27 +1,99 @@
 {% extends 'headerPage.html' %}
 
-{% block content%}
+{% block content %}
+    <div class="container">
+        <h1 class="title">Vernacular Animal Database</h1>
 
-    <h2>Uplaod Image for Classification</h2>
+        <div class="upload-section">
+            <h2>Upload Image for Classification</h2>
+            <form method="post" enctype="multipart/form-data" action="predictImage">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="filePath" class="form-label">Upload Image File Here:</label>
+                    <input name="filePath" type="file" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="vernacularName" class="form-label">Enter Vernacular Name:</label>
+                    <input name="vernacularName" type="text" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="language" class="form-label">Select Language:</label>
+                    <select name="language" class="form-control" required>
+                        <option value="Hindi">Hindi</option>
+                        <option value="Dogri">Dogri</option>
+                        <option value="Kangri">Kinnauri</option>
+                        <option value="Mandyali">Mandyali</option>
+                        <option value="Bengali">Bengali</option>
+                        <option value="Marathi">Marathi</option>
+                        <option value="Telugu">Telugu</option>
+                        <option value="Tamil">Tamil</option>
+                        <option value="Gujarati">Gujarati</option>
+                        <option value="Urdu">Urdu</option>
+                        <option value="Kannada">Kannada</option>
+                        <option value="Odia">Odia</option>
+                        <option value="Malayalam">Malayalam</option>
+                        <option value="Punjabi">Punjabi</option>
+                        <option value="Assamese">Assamese</option>
+                        <option value="French">French</option>
+                        <option value="German">German</option>
+                        <option value="Spanish">Spanish</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+            </form>
+        </div>
 
-    
-    <br>
-   
-    <form method="post" enctype="multipart/form-data" action="predictImage">
-  
- {% csrf_token %}
- <div class="col-md-4 col-sm-4"><label for="fname">Upload Image File Here:</label> </div> <input name="filePath" type="file"><br><br>
- <br>
+        {% if predictedLabel %}
+        <div class="result-section mt-5">
+            <h2>Classification Result</h2>
+            <p>The classification of the image is: <strong>{{ predictedLabel }}</strong></p>
+            <img src="{{ filePathName }}" alt="Classified Image" class="img-fluid">
+        </div>
+        {% endif %}
+    </div>
 
- 
- <input type="submit" value="Submit" ></div>
-
- <h2>The classification of the image is {{predictedLabel}}</h2>
- <img src={{filePathName}} alt='imagename'>
- {{filePathName}}
-
-</form>
-<br>
-
-
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            color: #2c3e50;
+        }
+        .upload-section, .result-section {
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-label {
+            font-size: 1.2em;
+            color: #34495e;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 1.2em;
+        }
+        .result-section {
+            text-align: center;
+        }
+        .result-section p {
+            font-size: 1.5em;
+            color: #2c3e50;
+        }
+        .img-fluid {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+    </style>
 {% endblock %}

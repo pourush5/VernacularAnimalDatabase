@@ -1,0 +1,88 @@
+{% extends 'headerPage.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="title">Vernacular Animal Database</h1>
+
+        <h4>
+            The Vernacular Animal Database is a web application designed to provide a platform for users to explore and classify images of animals using vernacular names. It leverages machine learning techniques to predict the species of animals based on uploaded images and allows users to search and view the database based on various names in different languages.
+            <br><br>
+            <b><i>Features</i></b><br><br>
+            <b>Image Classification: </b> Users can upload images of animals, and the application employs machine learning models to classify them based on their species. The classification results are displayed to users, along with relevant information.
+            <br>
+            <b>Vernacular Names: </b> The application incorporates vernacular names of animals, enabling users to search for and classify animals using local language terminology.
+            <br>
+            <b>Search Functionality:</b> Users can search the database using vernacular names, predicted labels, or image paths. The application provides flexible search options to facilitate easy access to animal information.
+            <br>
+            <b>User-Friendly Interface:</b> The user interface of the Vernacular Animal Database is intuitive and easy to navigate. Users can upload images, view classification results, and search the database seamlessly.
+            <br>
+            Responsive Design: The application is built with responsive design principles, ensuring compatibility across various devices and screen sizes. Users can access the Vernacular Animal Database from desktops, laptops, tablets, and smartphones.
+            <br><br>
+            <b><i>Technologies Used</i></b><br>
+            <br>
+            <b>Django</b>: The backend of the application is powered by Django, a high-level Python web framework, which provides robust features for building web applications.
+            <br>
+            <b>Bootstrap</b>: Bootstrap, a popular front-end framework, is utilized for designing responsive and mobile-first web pages. It offers a collection of CSS and JavaScript components for creating modern web interfaces.
+            <br>
+            <b>TensorFlow/Keras</b>: TensorFlow and Keras are used for developing and deploying machine learning models for image classification tasks. These libraries enable the application to accurately predict the species of animals based on uploaded images.
+            <br><br>
+            <b><i>Future Enhancements</i></b><br>
+            <br>
+            <b>User Authentication:</b> Implement user authentication and authorization features to allow registered users to save their favorite images, contribute to the database, and personalize their experience.
+            <br>
+            <b>Image Tagging:</b> Introduce functionality for users to tag and annotate images, enhancing the richness of the database and facilitating more precise searches.
+            <br>
+            <b>Localization:</b> Extend support for multiple languages to cater to a diverse user base, enabling users to interact with the application in their preferred language.
+            <br>
+            <b>Performance Optimization:</b> Optimize the performance of image classification algorithms and database queries to enhance the speed and responsiveness of the application, especially as the database grows.
+            <br><br>
+            <b>Conclusion</b>
+            <br>
+            The Vernacular Animal Database aims to bridge the gap between traditional knowledge and modern technology by providing a platform where users can explore and classify animals using vernacular names. With its user-friendly interface, accurate classification capabilities, and future expansion possibilities, the application endeavors to become a valuable resource for wildlife enthusiasts, researchers, and conservationists and people interested in training efficient ML models alike.</h4>
+
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            color: #2c3e50;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-label {
+            font-size: 1.2em;
+            color: #34495e;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 1.2em;
+        }
+        .result-section {
+            margin-top: 20px;
+        }
+        .image-entry {
+            background: #ecf0f1;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .image-entry img {
+            display: block;
+            margin: 0 auto 10px;
+        }
+        .image-entry p {
+            text-align: center;
+            font-size: 1.2em;
+            color: #34495e;
+        }
+    </style>
+{% endblock %}
